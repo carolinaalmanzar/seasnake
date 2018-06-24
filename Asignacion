@@ -1,0 +1,269 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int MovimientoUnaDimension ();
+int ObjetosCaidaLibre ();
+int MovimientoBidimencional ();
+int MovimientoCircular ();
+void menu ();
+
+int main()
+{
+    system("COLOR 0F");
+    menu();
+    return 0;
+}
+
+void menu() {
+    int x;
+    printf("\n\t<<<<<<<<<<<<<<Seleccione la Ecuacion que desea Simular:>>>>>>>>>>>>\n\n");
+    printf("1-Movimiento en una dimension con aceleracion constante.\n\n");
+    printf("2-Objeto en Caida Libre.\n\n");
+    printf("3-Movimiento Bidimensional (Tiro parabolico).\n\n");
+    printf("4-Movimiento Circular Uniforme.\n");
+    printf("\n\n5-Salir\n\n Comando:");
+    scanf("%d", &x);
+
+    switch (x) {
+    case 1: MovimientoUnaDimension(); break;
+    case 2: ObjetosCaidaLibre(); break;
+    case 3: MovimientoBidimencional(); break;
+    case 4: MovimientoCircular(); break;
+    case 5: EXIT_SUCCESS; break;
+    default: printf("\n***El numero digitado no es una opcion***\n\n");
+    }
+}
+int MovimientoUnaDimension() {
+
+    float pf, pi, vi, vf, acel, tf, ti; int tiporespuesta, m;
+    system("cls");
+    printf("\n\tMovimiento de una dimension\n\n");
+
+    printf("Digite la velocidad inicial: \n");
+    scanf("%f", &vi);
+    printf("Digite la posicion inicial: \n");
+    scanf("%f", &pi);
+    printf("Digite la aceleracion: \n");
+    scanf("%f", &acel);
+    printf("\n\tseleccione el tipo de respuesta: \n");
+    printf("**Digite 1 para un tiempo especifico o 2 para un intervalo** \n");
+    scanf("%d", &tiporespuesta);
+
+    if(tiporespuesta==1)
+{       system("cls");
+        printf("Digite el tiempo en segundos: \n");
+        scanf("%f", &tf);
+
+        pf = pi+(vi+(acel*tf/2))*tf;
+        vf = vi + (acel*tf);
+        printf("La Posicion final es: %.2fMts/seg \n", pf);
+        printf("La velocidad final es: %.2fMts/seg \n", vf);}
+
+        else
+        if(tiporespuesta==2)
+         {
+            system("cls");
+            printf("Digite el tiempo inicial para el intervalo: \n");
+            scanf("%f", &ti);
+            printf("Digite el tiempo final para el intervalo: \n");
+            scanf("%f", &tf);
+            if(ti>tf){
+                printf("\n**ERROR: Su tiempo Inicial NO puede ser mayor que el tiempo final**\n\n");     }
+            for(ti=ti; ti<=tf; ti++)       {
+                pf = pi+(vi+(acel*ti/2))*ti;
+                vf = vi + (acel*ti);
+                printf("La posicion en %.2f segundos es: %.2fMts \n", ti, pf);
+                printf("La velocidad en %.2f segundos es: %.2fMts/seg \n\n", ti, vf);
+            }
+        }
+    printf("Desea volver al menu principal:\n 1-Si\n 2-no\n\n");
+    scanf("%d", &m);
+    if(m==1){
+        system("cls");
+        menu();
+
+    }else{
+    EXIT_SUCCESS;
+    }
+    return 0;
+}
+
+int ObjetosCaidaLibre()
+{
+    float pf, pi, vi, vf, acel, tf, ti; int tiporespuesta, m;
+        system("cls");
+    printf("\n\tObjeto en Caida Libre\n\n");
+
+        printf("Digite la altura incial: \n");
+        scanf("%f", &pi);
+        printf("Digite la velocidad inicial: \n");
+        scanf("%f", &vi);
+        printf("Digite la aceleracion: \n");
+        scanf("%f", &acel);
+        printf("\n\t        Digite el tipo de respuesta: \n");
+        printf("**Digite 1 para el tiempo especifico o 2 para un intervalo de tiempo**\n");
+        scanf("%d", &tiporespuesta);
+
+        if(tiporespuesta==1)
+{       system("cls");
+        printf("Digite el tiempo en segundos: \n");
+        scanf("%f", &tf);
+
+        pf = pi+(vi+(acel*tf/2))*tf;
+        printf("La posicion final es: %.2f \n", pf);}
+
+        else if(tiporespuesta==2)
+         {  system("cls");
+            printf("Digite el tiempo inicial para el intervalo: \n");
+            scanf("%f", &ti);
+            printf("Digite el tiempo final para el intervalo: \n");
+            scanf("%f", &tf);
+             if(ti>tf){
+                printf("\n**ERROR: Su tiempo Inicial NO puede ser mayor que el tiempo final**\n\n");     }
+
+            for(ti=ti; ti<=tf; ti++)
+            {
+                pf = pi+(vi+(acel*ti/2))*ti;
+                printf("La posicion en %.2f segundos es: %.2f \n", ti, pf);           }
+         }
+       printf("Desea volver al menu principal:\n 1-Si\n 2-no\n\n");
+       scanf("%d", &m);
+      if(m==1){
+        system("cls");
+        menu();
+      }
+      else{
+      EXIT_SUCCESS;
+      }
+      return 0;
+}
+
+int MovimientoBidimencional() {
+    float pf, pi, vi, vf, acel, tf, ti; int tiporespuesta, m;
+    system("cls");
+    printf("\n\tMovimiento Bidimencional (Tiro Parabolico)\n\n");
+
+    printf("\nVelocidad inicial de X\n\nDigite la velocidad inicial: ");
+    scanf("%d",&vi);
+    printf("Digite el angulo: ");
+    scanf("%d",&A);
+    cA=cos(A);
+    xvi=vi*cA;
+    printf("La velocidad inicial de X es igual a: %d",xvi);
+
+break;
+
+case 2:
+    printf("\n\tVelocidad inicial de Y\n\nDigite la velocidad inicial: ");
+    scanf("%d",&vi);
+    printf("Digite el angulo: ");
+    scanf("%d",&A);
+    sA=sin(A);
+    yvi=vi*sA;
+    printf("La velocidad inicial de Y es igual a: %d",yvi);
+break;
+
+case 3:
+    printf("\n\tVelocidad final\n\nDigite la velocidad inicial: ");
+    scanf("%d",&vi);
+    printf("Digite la aceleracion en M*seg: ");
+    scanf("%d",&ax);
+
+   printf("Como desea su respuesta:\n1-Tiempo especifico\n2-Intervalo de tiempo\n\nSeleccion: ");
+   scanf("%d",&c);
+   if(c==1){
+   printf("Digite el tiempo: ");
+   scanf("%d",&t);
+    xvf=vi+(ax*t);
+   printf("La velocidad final es igual a: %d",xvf);}
+   else{
+    printf("Digite el valor inicial del intervalo: ");
+    scanf("%d",&d);
+    printf("Digite el valor final del intervalo: ");
+    scanf("%d",&e);
+    for ( t=d; t<=e; t++ ) {
+    xvf=vi+(ax*t);
+    printf("La velocidad final es igual a: %d M/seg\n",xvf);}}
+
+case 4:
+    printf("\n\tPosicion final de X\n\nDigite la posicion inicial de X: ");
+    scanf("%d",&xi);
+    printf("Digite la velocidad final de X en M/seg: ");
+    scanf("%d",&xvf);
+    printf("Digite la aceleracion de X en M*seg: ");
+    scanf("%d",&xvf);
+   printf("Como desea su respuesta:\n1-Tiempo especifico\n2-Intervalo de tiempo\n\nSeleccion: ");
+   scanf("%d",&c);
+
+   if(c==1){
+   printf("Digite el tiempo: ");
+   scanf("%d",&t);
+   t2=pow(t,2);
+    xf=(xi+(xvi*t))+((ax+t2)/2);
+   printf("La velocidad final es igual a: %d M/seg\n",xf);}
+
+   else{
+    printf("Digite el valor inicial del intervalo: ");
+    scanf("%d",&d);
+    printf("Digite el valor final del intervalo: ");
+    scanf("%d",&e);
+
+    for ( t=d; t<=e; t++ ) {
+    t2=pow(t,2);
+    xf=(xi+(xvi*t))+((ax+t2)/2);
+    printf("La velocidad final es igual a: %d M/seg\n",xf);    }
+    }
+
+    printf("Desea volver al menu principal:\n 1-Si\n 2-no\n\n");
+       scanf("%d", &m);
+      if(m==1){
+        system("cls");
+        menu();
+      }
+      else{
+      EXIT_SUCCESS;
+      }
+      return 0;
+}
+    }
+
+int MovimientoCircular() {
+    int a,b,c,d,e,f,xi,xf,xvi,xvf,t,ax,t2,A,cA,sA,vi,yvi,r, m;
+    system("cls");
+    printf("\n\t Movimiento Circular\n\n");
+
+    printf("Digite la velocidad en M/seg: ");
+    scanf("%d",&xvi);
+    printf("Digite el radio de la circunferencia: ");
+    scanf("%d",&r);
+
+printf("Como desea su respuesta:\n1-Tiempo especifico\n2-Intervalo de tiempo\n\nSeleccion:");
+   scanf("%d",&c);
+   if(c==1){
+   printf("Digite el tiempo en seg: ");
+   scanf("%d",&t);
+    A=(xvi*t)/r;
+   printf("El angulo es igual a: %d",A);}
+
+   else{
+    printf("Digite el valor inicial del intervalo: ");
+    scanf("%d",&d);
+    printf("Digite el valor final del intervalo: ");
+    scanf("%d",&e);
+
+    for ( t=d; t<=e; t++ ) {
+    A=(xvi*t)/r;
+    printf("El angulo es igual a: %d\n",A);}  }
+
+    printf("Desea volver al menu principal:\n 1-Si\n 2-no\n\n");
+       scanf("%d", &m);
+      if(m==1){
+        system("cls");
+        menu();
+      }
+      else{
+      EXIT_SUCCESS;
+      }
+      return 0;
+}
